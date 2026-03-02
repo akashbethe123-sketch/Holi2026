@@ -1,92 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Happy Holi 🎨</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
-      background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
-      color: white;
-      overflow: hidden;
-    }
+<title>For Someone Special 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @keyframes gradient {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  background: linear-gradient(45deg,#ff6ec4,#7873f5,#42e695);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+  color: white;
+}
 
-    .box {
-      margin-top: 25%;
-      background: rgba(0,0,0,0.4);
-      padding: 25px;
-      border-radius: 15px;
-      display: inline-block;
-    }
+@keyframes gradient {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
 
-    h1 { font-size: 35px; }
-    p { font-size: 22px; }
+.container {
+  margin-top: 30%;
+  padding: 20px;
+}
 
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+h1 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background: white;
+  color: #ff4081;
+  font-weight: bold;
+}
+
+#surprise {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+}
+</style>
 </head>
+
 <body>
 
-<div class="box">
-  <h1>Happy Holi 🎉</h1>
+<div class="container">
+  <h1>Happy Holi 🌸</h1>
   <p id="message"></p>
-  <button onclick="shareLink()">Share 🎁</button>
+  <button onclick="showSurprise()">Click for Surprise 🎁</button>
+  <div id="surprise">You make my life more colorful than Holi itself 💖✨</div>
 </div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get("name");
+const params = new URLSearchParams(window.location.search);
+const name = params.get("name");
 
-  if(name){
-    document.getElementById("message").innerHTML =
-      "Wishing you a colorful and joyful Holi, " + name + " 🌸✨";
-  } else {
-    document.getElementById("message").innerHTML =
-      "Wishing you a colorful and joyful Holi 🌸✨";
-  }
+if(name){
+  document.getElementById("message").innerHTML =
+  "This Holi is more special because of you, " + name + " 💕";
+} else {
+  document.getElementById("message").innerHTML =
+  "This Holi is more special because of you 💕";
+}
 
-  function shareLink(){
-    navigator.clipboard.writeText(window.location.href);
-    alert("Link copied! Send to your friends 🎨");
-  }
-
-  // Confetti Effect
-  const colors = ["#ff0","#0ff","#f0f","#0f0","#f00","#00f"];
-  setInterval(function(){
-    const confetti = document.createElement("div");
-    confetti.style.position = "absolute";
-    confetti.style.width = "10px";
-    confetti.style.height = "10px";
-    confetti.style.background = colors[Math.floor(Math.random()*colors.length)];
-    confetti.style.left = Math.random()*window.innerWidth + "px";
-    confetti.style.top = "-10px";
-    confetti.style.borderRadius = "50%";
-    document.body.appendChild(confetti);
-
-    let fall = setInterval(function(){
-      confetti.style.top = parseInt(confetti.style.top) + 5 + "px";
-      if(parseInt(confetti.style.top) > window.innerHeight){
-        clearInterval(fall);
-        confetti.remove();
-      }
-    }, 20);
-  }, 200);
+function showSurprise(){
+  document.getElementById("surprise").style.display = "block";
+}
 </script>
 
 </body>
